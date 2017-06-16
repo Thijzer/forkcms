@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `pages_blocks` (
  `position` varchar(255) NOT NULL,
  `extra_id` int(11) default NULL COMMENT 'The linked extra.',
  `extra_type` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'rich_text',
+ `extra_data` text COLLATE utf8mb4_unicode_ci,
  `html` text COMMENT 'if this block is HTML this field should contain the real HTML.',
  `created_on` datetime NOT NULL,
  `edited_on` datetime NOT NULL,
