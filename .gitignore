@@ -20,3 +20,11 @@
 /bundles/*
 /css/*.css
 /js/*.js
+
+index.php
+docker/
+docker-compose.yml*
+composer.phar
+.data/
+var/
+*.sh
