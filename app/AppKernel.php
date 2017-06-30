@@ -10,20 +10,12 @@
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
-// hardcoded this for now, this should be autoloaded
-require_once __DIR__ . '/Kernel.php';
-require_once __DIR__ . '/routing.php';
-
 /**
  * The AppKernel provides a proper way to handle a request and transform it into a response.
  */
 class AppKernel extends Kernel
 {
-    /**
-     * Load all the bundles we'll be using in our application.
-     *
-     * @return array
-     */
+    /** Load all the bundles we'll be using in our application */
     public function registerBundles()
     {
         $bundles = array(
@@ -51,9 +43,6 @@ class AppKernel extends Kernel
         return $bundles;
     }
 
-    /**
-     * @param LoaderInterface $loader
-     */
     public function registerContainerConfiguration(LoaderInterface $loader)
     {
         $fs = new Filesystem();

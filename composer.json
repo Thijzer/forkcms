@@ -33,7 +33,8 @@
         "mailmotor/mailchimp-bundle": "^2.0",
         "mailmotor/campaignmonitor-bundle": "^1.0",
         "mailmotor/mailmotor-bundle": "^2.0",
-        "swiftmailer/swiftmailer": "^5.4.6"
+        "swiftmailer/swiftmailer": "^5.4.6",
+        "symfony/asset": "^3.3"
     },
     "require-dev": {
         "jdorn/sql-formatter": "1.2.17",
@@ -50,12 +51,10 @@
     },
     "scripts": {
         "post-install-cmd": [
-            "php app/console assetic:dump .",
-            "cd tools && bash ./remove_cache"
+            "php app/console assetic:dump ."
         ],
         "post-update-cmd": [
-            "php app/console assetic:dump .",
-            "cd tools && bash ./remove_cache"
+            "php app/console assetic:dump ."
         ]
     },
     "autoload": {

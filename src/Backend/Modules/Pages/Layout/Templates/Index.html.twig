@@ -56,3 +56,11 @@
   </div>
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+  <script src="{{ asset('jstree/jquery.tree.js') }}"></script>
+  <script src="{{ asset('jstree/lib/jquery.cookie.js') }}"></script>
+  <script src="{{ asset('jstree/plugins/jquery.tree.cookie.js') }}"></script>
+
+{% endblock %}
+
