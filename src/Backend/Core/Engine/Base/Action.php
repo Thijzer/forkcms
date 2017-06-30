@@ -140,43 +140,6 @@ class Action extends Object
      */
     public function execute()
     {
-        // add jquery, we will need this in every action, so add it globally
-        $this->header->addJS('/js/vendors/jquery.min.js', 'Core', false, true);
-        $this->header->addJS('/js/vendors/jquery-migrate.min.js', 'Core', false, true);
-        $this->header->addJS('/js/vendors/jquery-ui.min.js', 'Core', false, true);
-        $this->header->addJS('/js/vendors/bootstrap.min.js', 'Core', false, true);
-        $this->header->addJS('/js/vendors/typeahead.bundle.min.js', 'Core', false, true);
-        $this->header->addJS('/js/vendors/bootstrap-tagsinput.min.js', 'Core', false, true);
-        $this->header->addJS('jquery/jquery.backend.js', 'Core');
-
-        // add items that always need to be loaded
-        $this->header->addJS('utils.js', 'Core', true, false, true);
-        $this->header->addJS('backend.js', 'Core', true, false, true);
-
-        // add module js
-        if (is_file($this->getBackendModulePath() . '/Js/' . $this->getModule() . '.js')) {
-            $this->header->addJS($this->getModule() . '.js', null, true, false, true);
-        }
-
-        // add action js
-        if (is_file($this->getBackendModulePath() . '/Js/' . $this->getAction() . '.js')) {
-            $this->header->addJS($this->getAction() . '.js', null, true, false, true);
-        }
-
-        // add core css files
-        $this->header->addCSS('/css/vendors/bootstrap-tagsinput.css', 'Core', true);
-        $this->header->addCSS('/css/vendors/bootstrap-tagsinput-typeahead.css', 'Core', true);
-        $this->header->addCSS('screen.css', 'Core');
-        $this->header->addCSS('debug.css', 'Core');
-
-        // add module specific css
-        if (is_file($this->getBackendModulePath() . '/Layout/Css/' . $this->getModule() . '.css')) {
-            $this->header->addCSS($this->getModule() . '.css');
-        }
-
-        // store var so we don't have to call this function twice
-        $var = array_map('strip_tags', $this->getParameter('var', 'array', array()));
-
         // is there a report to show?
         if ($this->getParameter('report') !== null) {
             // show the report

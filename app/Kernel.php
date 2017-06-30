@@ -49,9 +49,6 @@ abstract class Kernel extends BaseKernel implements KernelInterface
      */
     public function handle(Request $request, $type = HttpKernelInterface::MASTER_REQUEST, $catch = true)
     {
-        // boot if it hasn't booted yet
-        $this->boot();
-
         return $this->getHttpKernel()->handle($request, $type, $catch);
     }
 
@@ -60,10 +57,6 @@ abstract class Kernel extends BaseKernel implements KernelInterface
      */
     public function boot()
     {
-        if ($this->booted) {
-            return;
-        }
-
         parent::boot();
 
         // define Fork constants
@@ -79,6 +72,7 @@ abstract class Kernel extends BaseKernel implements KernelInterface
     {
         $container = $this->getContainer();
 
+        //
         Spoon::setDebug($container->getParameter('kernel.debug'));
         Spoon::setDebugEmail($container->getParameter('fork.debug_email'));
         Spoon::setDebugMessage($container->getParameter('fork.debug_message'));
@@ -120,9 +114,9 @@ abstract class Kernel extends BaseKernel implements KernelInterface
         defined('FRONTEND_CORE_PATH') || define('FRONTEND_CORE_PATH', FRONTEND_PATH . '/Core');
         defined('FRONTEND_MODULES_PATH') || define('FRONTEND_MODULES_PATH', FRONTEND_PATH . '/Modules');
         defined('FRONTEND_FILES_PATH') || define('FRONTEND_FILES_PATH', FRONTEND_PATH . '/Files');
-        defined('FRONTEND_FILES_URL') || define('FRONTEND_FILES_URL', '/src/Frontend/Files');
         defined('FRONTEND_CORE_URL') || define('FRONTEND_CORE_URL', '/src/Frontend/Core');
-        defined('FRONTEND_CACHE_URL') || define('FRONTEND_CACHE_URL', '/src/Frontend/Cache');
+        defined('FRONTEND_CACHE_URL') || define('FRONTEND_CACHE_URL', '/Cache');
+        defined('FRONTEND_FILES_URL') || define('FRONTEND_FILES_URL', '/Files');
 
         defined('API_CORE_PATH') || define('API_CORE_PATH', PATH_WWW . '/Api');
     }

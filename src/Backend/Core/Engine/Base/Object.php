@@ -20,6 +20,7 @@ use Common\Exception\RedirectException;
  */
 class Object extends \KernelLoader
 {
+    use DeprecationTrait;
     /**
      * The current action
      *

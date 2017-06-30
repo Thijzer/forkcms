@@ -7,8 +7,7 @@
 
 set_time_limit(0);
 
-require_once __DIR__ . '/../autoload.php';
-require_once __DIR__ . '/AppKernel.php';
+require_once __DIR__ . '/autoload.php';
 require_once __DIR__ . '/BaseModel.php';
 
 use Common\ModulesSettings;
@@ -20,12 +19,6 @@ use Backend\Init as BackendInit;
 $input = new ArgvInput();
 $env = $input->getParameterOption(array('--env', '-e'), getenv('SYMFONY_ENV') ?: 'dev');
 $debug = getenv('SYMFONY_DEBUG') !== '0' && !$input->hasParameterOption(array('--no-debug', '')) && $env !== 'prod';
-
-// Fork has not yet been installed
-$parametersFile = __DIR__ . '/config/parameters.yml';
-if (!file_exists($parametersFile)) {
-    $env = 'install';
-}
 
 if ($debug) {
     Debug::enable();

@@ -43,20 +43,7 @@ abstract class Init extends \KernelLoader
         }
         $this->type = $type;
 
-        // set a default timezone if no one was set by PHP.ini
-        if (ini_get('date.timezone') == '') {
-            date_default_timezone_set('Europe/Brussels');
-        }
-
-        // get last modified time for globals
-        $lastModifiedTime = @filemtime(PATH_WWW . '/app/config/parameters.yml');
-
-        // reset last modified time if needed when invalid or debug is active
-        if ($lastModifiedTime === false || $this->getContainer()->getParameter('kernel.debug')) {
-            $lastModifiedTime = time();
-        }
-
-        // define as a constant
-        defined('LAST_MODIFIED_TIME') || define('LAST_MODIFIED_TIME', $lastModifiedTime);
+        // RIP unwanted date.timezone (move to param)
+        // RIP LAST_MODIFIED_TIME
     }
 }

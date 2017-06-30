@@ -9,12 +9,29 @@
 
   <link href='https://fonts.googleapis.com/css?family=Source+Code+Pro%7COpen+Sans:400,600' rel='stylesheet' type='text/css'>
 
+  <link rel="stylesheet" href="/css/vendors/bootstrap-tagsinput.css" />
+  <link rel="stylesheet" href="/css/vendors/bootstrap-tagsinput-typeahead.css" />
+  <link rel="stylesheet" href="/css/vendors/screen.css" />
+  <link rel="stylesheet" href="/css/vendors/debug.css" />
+
   {% for cssFile in cssFiles %}
     <link rel="stylesheet" href="{{ cssFile.file }}" />{{ CRLF }}{{ TAB }}
   {% endfor %}
 
+  {% block javascripts %}
+  <script src="/js/vendors/jquery.min.js"></script>
+  <script src="/js/vendors/jquery-migrate.min.js"></script>
+  <script src="/js/vendors/jquery-ui.min.js"></script>
+  <script src="/js/vendors/bootstrap.min.js"></script>
+  <script src="/js/vendors/typeahead.bundle.min.js"></script>
+  <script src="/js/vendors/bootstrap-tagsinput.min.js"></script>
+  <script src="/js/vendors/jquery/jquery.backend.js"></script>
+  <script src="/js/vendors/utils.js"></script>
+  <script src="/js/vendors/backend.js"></script>
+  {% endblock %}
+
   {% for jsFile in jsFiles %}
-    <script src="{{ jsFile.file }}"></script>{{ CRLF }}{{ TAB }}
+    <script src="/web{{ jsFile.file }}"></script>{{ CRLF }}{{ TAB }}
   {% endfor %}
 
   <script>

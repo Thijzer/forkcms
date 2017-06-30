@@ -818,12 +818,8 @@ class Header extends FrontendBaseObject
                 if (in_array($file['file'], $ignoreCache) || $file['add_timestamp'] === false) {
                     $file = array('file' => $file['file']);
                 } else {
-                    // add last modified time
-                    $modifiedTime = (mb_strpos(
-                        $file['file'],
-                        '?'
-                    ) !== false) ? '&amp;m=' . LAST_MODIFIED_TIME : '?m=' . LAST_MODIFIED_TIME;
-                    $file = array('file' => $file['file'] . $modifiedTime);
+                    // RIP LAST_MODIFIED_TIME
+                    $file = array('file' => $file['file']);
                 }
 
                 $jsFilesGrouped[$priorityGroup][] = $file;
